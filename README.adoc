@@ -1,0 +1,10 @@
+== Typescript 
+Repo inneholder ressurser for oppsett av typescript. 
+
+
+Readme filen i typescript mappen inneholder veiledning for installasjon og bruk av ts og gulp byggesystemet. 
+
+****
+
+****
+

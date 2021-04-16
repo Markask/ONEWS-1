@@ -1,0 +1,244 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.onews_dips_saar.v0
+
+concept
+	[at0000]	-- Onews dips
+language
+	original_language = <[ISO_639-1::nb]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"A8642BE170209230DF4810976C766044">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Onews dips
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Respiration frequency
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::382]>
+												list = <
+													["1"] = <
+														units = <"1/min">
+														magnitude = <|0.0..100.0|>
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Heart Rate
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::382]>
+												list = <
+													["1"] = <
+														units = <"1/min">
+														magnitude = <|0.0..1000.0|>
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Oxigen Saturation
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Systolic BP
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::125]>
+												list = <
+													["1"] = <
+														units = <"mm[Hg]">
+														magnitude = <|0.0..500.0|>
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Diastolic BP
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::125]>
+												list = <
+													["1"] = <
+														units = <"mm[Hg]">
+														magnitude = <|0.0..500.0|>
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Temperature
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::127]>
+												list = <
+													["1"] = <
+														units = <"°C">
+														magnitude = <|20.0..50.0|>
+														precision = <|1|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Alertness
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0012, 	-- A
+													at0014, 	-- C
+													at0015, 	-- V
+													at0016, 	-- P
+													at0017]	-- U
+												}
+											}
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Yellow score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..5|}
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Red score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..7|}
+											}
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Comments
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Onews dips">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Heart Rate">
+					description = <"Puls per minute.">
+				>
+				["at0006"] = <
+					text = <"Respiration frequency">
+					description = <"Respirations per minute.">
+				>
+				["at0007"] = <
+					text = <"Oxigen Saturation">
+					description = <"SpO2">
+				>
+				["at0008"] = <
+					text = <"Systolic BP">
+					description = <"mmHg">
+				>
+				["at0009"] = <
+					text = <"Diastolic BP">
+					description = <"mmHg.">
+				>
+				["at0010"] = <
+					text = <"Temperature">
+					description = <"Celsius.">
+				>
+				["at0011"] = <
+					text = <"Alertness">
+					description = <"A = Awake, C=Confusion, V=Verbal respons, P=Pain only, U=Uresponsive.">
+				>
+				["at0012"] = <
+					text = <"A">
+					description = <"Alert and awake">
+				>
+				["at0014"] = <
+					text = <"C">
+					description = <"Confusion">
+				>
+				["at0015"] = <
+					text = <"V">
+					description = <"Verbal Response">
+				>
+				["at0016"] = <
+					text = <"P">
+					description = <"Pain Only">
+				>
+				["at0017"] = <
+					text = <"U">
+					description = <"Unresponsive">
+				>
+				["at0018"] = <
+					text = <"Red score">
+					description = <"Onews total score">
+				>
+				["at0019"] = <
+					text = <"Comments">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Yellow score">
+					description = <"*">
+				>
+			>
+		>
+	>
