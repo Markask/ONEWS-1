@@ -11,7 +11,7 @@ import { DvCodedText, DvCount } from 'ehrcraft-form-api';
 export function main(api: API) {
 
   console.log(banner)
-  
+  console.log("Takk Borisa")
 
 
 }
